@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "ankh",
+  "version": "${version}",
+  "name": "Ankh Resurrection",
+  "description": "An Egyptian Ankh artifact that resurrects dead players. Featuring guardian Resurrection Zombies, immutable Corpse entities, a 20-minute resurrection window, and full multiplayer/singleplayer support with persistent sessions.",
+  "authors": [
+    "Boy"
+  ],
+  "license": "MIT",
+  "icon": "assets/ankh/textures/item/ankh.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.ankh.AnkhResurrection"
+    ],
+    "client": [
+      "com.ankh.client.AnkhResurrectionClient"
+    ]
+  },
+  "mixins": [
+    "ankh.mixins.json",
+    {
+      "config": "ankh.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "suggests": {}
+}

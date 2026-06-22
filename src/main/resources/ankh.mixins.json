@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.ankh.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "EntityTrackerInvoker",
+    "ServerChunkLoadingManagerAccessor",
+    "ServerPlayNetworkHandlerAccessor",
+    "ServerPlayNetworkHandlerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
