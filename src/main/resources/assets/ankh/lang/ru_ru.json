@@ -2,7 +2,7 @@
   "item.ankh.ankh": "Анкх",
   "item.ankh.ankh.tooltip.1": "Ключ жизни",
   "item.ankh.ankh.tooltip.2": "Используйте на теле павшего союзника, чтобы воскресить его.",
-  "entity.ankh.resurrection_zombie": "Зомби-воскреситель",
+  "entity.ankh.resurrection_zombie": "Страж Зомби",
   "entity.ankh.corpse": "Тело",
   "hud.ankh.time_remaining": "Осталось времени: %s",
   "button.ankh.wait_for_resurrection": "Ждать воскрешения",
