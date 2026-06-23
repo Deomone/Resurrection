@@ -2,7 +2,7 @@
   "item.ankh.ankh": "Ankh",
   "item.ankh.ankh.tooltip.1": "Key of Life",
   "item.ankh.ankh.tooltip.2": "Use on a fallen ally's corpse to bring them back.",
-  "entity.ankh.resurrection_zombie": "Guardian Zombie",
+  "entity.ankh.resurrection_zombie": "Resurrection Zombie",
   "entity.ankh.corpse": "Corpse",
   "hud.ankh.time_remaining": "Time Remaining: %s",
   "button.ankh.wait_for_resurrection": "Wait for Resurrection",

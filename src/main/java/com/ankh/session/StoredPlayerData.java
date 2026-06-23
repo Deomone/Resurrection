@@ -11,6 +11,7 @@ import net.minecraft.server.network.ServerPlayerEntity;
 public final class StoredPlayerData {
 
     private NbtList inventoryNbt;
+    private NbtList accessoriesNbt = new NbtList();
     private int experienceLevel;
     private float experienceProgress;
     private int totalExperience;
@@ -21,6 +22,9 @@ public final class StoredPlayerData {
         StoredPlayerData data = new StoredPlayerData();
 
         data.inventoryNbt = player.getInventory().writeNbt(new NbtList());
+        if (player instanceof ServerPlayerEntity sp) {
+            data.accessoriesNbt = com.ankh.compat.AccessoriesCompat.snapshot(sp);
+        }
         data.experienceLevel = player.experienceLevel;
         data.experienceProgress = player.experienceProgress;
         data.totalExperience = player.totalExperience;
@@ -37,6 +41,8 @@ public final class StoredPlayerData {
         player.totalExperience = totalExperience;
 
         player.setExperienceLevel(experienceLevel);
+
+        com.ankh.compat.AccessoriesCompat.restore(player, accessoriesNbt);
     }
 
     public void addOnto(ServerPlayerEntity player) {
@@ -47,6 +53,8 @@ public final class StoredPlayerData {
         giveAll(player, temp.armor);
         giveAll(player, temp.offHand);
         temp.clear();
+
+        com.ankh.compat.AccessoriesCompat.restore(player, accessoriesNbt);
 
         player.addExperience(totalExperience);
     }
@@ -63,6 +71,7 @@ public final class StoredPlayerData {
     public NbtCompound toNbt() {
         NbtCompound nbt = new NbtCompound();
         nbt.put("Inventory", inventoryNbt);
+        nbt.put("Accessories", accessoriesNbt);
         nbt.putInt("XpLevel", experienceLevel);
         nbt.putFloat("XpProgress", experienceProgress);
         nbt.putInt("XpTotal", totalExperience);
@@ -72,6 +81,7 @@ public final class StoredPlayerData {
     public static StoredPlayerData fromNbt(NbtCompound nbt) {
         StoredPlayerData data = new StoredPlayerData();
         data.inventoryNbt = nbt.getList("Inventory", NbtElement.COMPOUND_TYPE);
+        data.accessoriesNbt = nbt.getList("Accessories", NbtElement.COMPOUND_TYPE);
         data.experienceLevel = nbt.getInt("XpLevel");
         data.experienceProgress = nbt.getFloat("XpProgress");
         data.totalExperience = nbt.getInt("XpTotal");

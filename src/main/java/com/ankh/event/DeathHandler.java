@@ -53,6 +53,7 @@ public final class DeathHandler {
 
         StoredPlayerData snapshot = StoredPlayerData.capture(player);
         player.getInventory().clear();
+        com.ankh.compat.AccessoriesCompat.clear(player);
 
         player.experienceLevel = 0;
         player.experienceProgress = 0;
